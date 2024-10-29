@@ -1,16 +1,13 @@
-import './App.css'
+import React from 'react';
+import MenuPage from './pages/MenuPage';
+import './App.css';
 
-function App() {
+const App: React.FC = () => {
+    return (
+        <div className="App">
+            <MenuPage />
+        </div>
+    );
+};
 
-  return (
-      <div className="grid-container">
-          {Array.from({length: 9}, (_, index) => (
-              <div key={index} className="grid-item">
-                  {index + 1}
-              </div>
-          ))}
-      </div>
-  )
-}
-
-export default App
+export default App;
