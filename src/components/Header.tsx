@@ -1,11 +1,14 @@
 import React from 'react';
 import Logo from "./Logo.tsx";
+import {useSelector} from 'react-redux';
+import {RootState} from '../store/store';
 
 const Header: React.FC = () => {
+    const cartCount = useSelector((state: RootState) => state.cart.items);
+
     return (
         <header className="w-full h-24 bg-white flex justify-between items-center px-32 shadow-md">
-            <Logo width={40} height={44} />
-
+            <Logo width={40} height={44}/>
 
             <div className="flex gap-24 items-center">
                 <nav className="flex space-x-8">
@@ -27,11 +30,10 @@ const Header: React.FC = () => {
                     </div>
                     <div
                         className="absolute -top-2 -right-2 w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md">
-                        0
+                        {cartCount}
                     </div>
                 </div>
             </div>
-
         </header>
     );
 };
