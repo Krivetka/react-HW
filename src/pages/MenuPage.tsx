@@ -64,7 +64,8 @@ const MenuPage: React.FC = () => {
                 ))}
             </div>
 
-            <div className="flex flex-wrap gap-6 justify-center mx-auto px-8">
+            <div className="grid gap-6 justify-items-start
+                    grid-cols-1 lg:grid-cols-2">
                 {displayedItems.map((item: MenuItemInterface) => (
                     <MenuItem
                         key={item.id}
@@ -74,10 +75,11 @@ const MenuPage: React.FC = () => {
                         img={item.img}
                     />
                 ))}
-            </div>
+        </div>
 
-            {displayedItems.length < menuItems.filter(item => item.category === activeCategory).length && (
-                <button
+    {
+        displayedItems.length < menuItems.filter(item => item.category === activeCategory).length && (
+            <button
                     onClick={handleSeeMore}
                     className="mt-8 mx-auto mb-40 bg-teal-500 text-white font-medium py-2 px-4 rounded-md hover:bg-teal-600"
                 >
