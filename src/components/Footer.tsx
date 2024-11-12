@@ -13,10 +13,10 @@ const Footer: React.FC = () => {
     ]);
 
     const [templateLinks] = useState([
-        { name: "Style Guide", url: "#" },
-        { name: "Changelog", url: "#" },
-        { name: "Licence", url: "#" },
-        { name: "Webflow University", url: "#" }
+        { name: "Style Guide", url: "https://www.google.com/" },
+        { name: "Changelog", url: "https://www.google.com/" },
+        { name: "Licence", url: "https://www.google.com/" },
+        { name: "Webflow University", url: "https://www.google.com/" }
     ]);
 
     const [flowbaseLinks] = useState([
