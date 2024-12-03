@@ -1,44 +1,159 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 100px 100px;
+  background-color: white;
+`;
+
+const BackgroundImage = styled.img`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 10;
+
+  @media (min-width: 640px) {
+    align-items: flex-start;
+    text-align: left;
+  }
+`;
+
+const Title = styled.h2`
+  color: #333;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+
+  @media (min-width: 640px) {
+    font-size: 3.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  span {
+    color: #14b8a6;
+  }
+`;
+
+const Description = styled.p`
+  margin-top: 1.5rem;
+  color: #6b7280;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  letter-spacing: 0.05em;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 640px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
+
+const OrderButton = styled.button`
+  width: 12rem;
+  height: 3.5rem;
+  margin-top: 3rem;
+  background-color: #14b8a6;
+  border-radius: 0.375rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.75;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #0d9c8d;
+  }
+`;
+
+const TrustpilotImage = styled.img`
+  width: 7rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 640px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
+
+const TrustpilotText = styled.p`
+  margin-top: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+
+  @media (min-width: 640px) {
+    text-align: left;
+  }
+
+  span {
+    color: #14b8a6;
+  }
+`;
+
+const BannerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  z-index: 10;
+`;
+
+const BannerImage = styled.img`
+  width: 80vw;
+
+  @media (min-width: 640px) {
+    width: 48vw;
+  }
+`;
 
 const HomePage: React.FC = () => {
-
     return (
-        <div className="w-full h-full p-8 flex flex-col items-center space-y-8">
-            <div className="relative w-full h-[480px] flex items-center justify-center bg-teal-400 rounded-md">
-                <div className="absolute w-52 h-56 left-[-133px] top-[-143px] opacity-20 bg-teal-400"></div>
-                <div className="absolute top-[-10%] text-center text-white text-base leading-tight w-full">
-                    <div className="w-48 h-14 bg-teal-400 rounded-md mx-auto">
-                        <div className="flex justify-center items-center w-full h-full">Place an Order</div>
-                    </div>
-                </div>
-            </div>
+        <Container>
+            <BackgroundImage src="src/assets/figure.png" alt="figure" />
+            <ContentWrapper>
+                <Title>
+                    Beautiful food & <br /> takeaway,
+                    <span>delivered</span> <br /> to your door.
+                </Title>
+                <Description>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s.
+                </Description>
+                <OrderButton aria-label="Place an order">Place an Order</OrderButton>
+                <TrustpilotImage src="src/assets/trustpilot.png" alt="trustpilot" />
+                <TrustpilotText>
+                    <span>4.8 out of 5</span> based on 2000+ reviews
+                </TrustpilotText>
+            </ContentWrapper>
 
-            <div className="w-full text-center text-slate-500 text-lg leading-normal tracking-tight">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500.
-            </div>
-
-            <div className="flex justify-between w-full max-w-[500px] mx-auto text-teal-400 text-base leading-tight">
-                <div>4.8 out of 5</div>
-                <div className="text-zinc-950">based on 2000+ reviews</div>
-            </div>
-
-            <div className="text-center w-full">
-                <span className="text-zinc-950 text-6xl leading-10 tracking-widest">Beautiful food & takeaway, </span>
-                <span className="text-teal-400 text-6xl leading-10 tracking-widest">delivered</span>
-                <span className="text-zinc-950 text-6xl leading-10 tracking-widest"> to your door.</span>
-            </div>
-
-            <div className="flex justify-center w-full">
-                <img className="w-96 h-96" src="src/assets/home-bunner.png" alt="bunner" />
-            </div>
-        </div>
+            <BannerWrapper>
+                <BannerImage src="src/assets/home-bunner.png" alt="banner" />
+            </BannerWrapper>
+        </Container>
     );
-
-
-
-
 };
 
 export default HomePage;
