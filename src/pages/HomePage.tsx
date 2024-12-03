@@ -4,12 +4,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 120px 100px 100px;
-  background-color: white;
 `;
 
 const BackgroundImage = styled.img`
@@ -17,24 +15,21 @@ const BackgroundImage = styled.img`
   position: absolute;
   top: 0;
   right: 0;
+  z-index: -1;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: 10;
+  margin: 0;
 `;
 
 const Title = styled.h2`
-  color: #333;
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+  color: #08090A;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 60px; 
+  letter-spacing: 1.8px;
 
   span {
     color: #14b8a6;
@@ -42,27 +37,25 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
-  margin-top: 1.5rem;
-  color: #6b7280;
-  font-size: 1.125rem;
-  line-height: 1.75;
-  letter-spacing: 0.05em;
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 28px;
+  color: #546285;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.36px;
 `;
 
 const OrderButton = styled.button`
   width: 12rem;
   height: 3.5rem;
   margin-top: 3rem;
-  background-color: #14b8a6;
+  background-color: #35B8BE;;
   border-radius: 0.375rem;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
+  color: #FFF;
   text-align: center;
-  line-height: 1.75;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
   cursor: pointer;
   transition: background-color 0.2s;
 
@@ -74,56 +67,46 @@ const OrderButton = styled.button`
 const TrustpilotImage = styled.img`
   width: 7rem;
   margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 const TrustpilotText = styled.p`
   margin-top: 0.5rem;
-  color: #333;
-  font-size: 1rem;
-  text-align: center;
-  letter-spacing: 0.05em;
+  color: #08090A;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
 
   span {
-    color: #14b8a6;
+    color: #35B8BE;
   }
 `;
 
-const BannerWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  z-index: 10;
-`;
-
 const BannerImage = styled.img`
-  width: 80vw;
+  width: 40vw;
+  max-width: 660px;
 `;
 
 const HomePage: React.FC = () => {
     return (
         <Container>
-            <BackgroundImage src="src/assets/figure.png" alt="figure" />
+            <BackgroundImage src="src/assets/figure.png" alt="figure"/>
             <ContentWrapper>
                 <Title>
-                    Beautiful food & <br /> takeaway,
-                    <span>delivered</span> <br /> to your door.
+                    Beautiful food & <br/> takeaway,
+                    <span>delivered</span> <br/> to your door.
                 </Title>
                 <Description>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                     industry's standard dummy text ever since the 1500s.
                 </Description>
                 <OrderButton aria-label="Place an order">Place an Order</OrderButton>
-                <TrustpilotImage src="src/assets/trustpilot.png" alt="trustpilot" />
+                <TrustpilotImage src="src/assets/trustpilot.png" alt="trustpilot"/>
                 <TrustpilotText>
                     <span>4.8 out of 5</span> based on 2000+ reviews
                 </TrustpilotText>
             </ContentWrapper>
 
-            <BannerWrapper>
-                <BannerImage src="src/assets/home-bunner.png" alt="banner" />
-            </BannerWrapper>
+            <BannerImage src="src/assets/home-bunner.png" alt="banner"/>
         </Container>
     );
 };
