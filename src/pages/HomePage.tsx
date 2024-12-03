@@ -37,6 +37,7 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
+  max-width: 560px;
   margin-top: 28px;
   color: #546285;
   font-size: 18px;
