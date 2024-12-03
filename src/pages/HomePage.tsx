@@ -27,11 +27,6 @@ const ContentWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   z-index: 10;
-
-  @media (min-width: 640px) {
-    align-items: flex-start;
-    text-align: left;
-  }
 `;
 
 const Title = styled.h2`
@@ -40,11 +35,6 @@ const Title = styled.h2`
   font-weight: bold;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
-
-  @media (min-width: 640px) {
-    font-size: 3.5rem;
-    letter-spacing: 0.2em;
-  }
 
   span {
     color: #14b8a6;
@@ -60,11 +50,6 @@ const Description = styled.p`
   max-width: 540px;
   margin-left: auto;
   margin-right: auto;
-
-  @media (min-width: 640px) {
-    margin-left: 0;
-    margin-right: 0;
-  }
 `;
 
 const OrderButton = styled.button`
@@ -91,11 +76,6 @@ const TrustpilotImage = styled.img`
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-
-  @media (min-width: 640px) {
-    margin-left: 0;
-    margin-right: 0;
-  }
 `;
 
 const TrustpilotText = styled.p`
@@ -104,10 +84,6 @@ const TrustpilotText = styled.p`
   font-size: 1rem;
   text-align: center;
   letter-spacing: 0.05em;
-
-  @media (min-width: 640px) {
-    text-align: left;
-  }
 
   span {
     color: #14b8a6;
@@ -123,10 +99,6 @@ const BannerWrapper = styled.div`
 
 const BannerImage = styled.img`
   width: 80vw;
-
-  @media (min-width: 640px) {
-    width: 48vw;
-  }
 `;
 
 const HomePage: React.FC = () => {
