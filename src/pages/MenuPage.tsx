@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Tooltip from "../components/Tooltip.tsx";
 import CategoryButton from "../components/CategoryButton.tsx";
 import MenuItem from "../components/MenuItem.tsx";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
 import { MenuItemInterface } from "../interfaces/MenuItem.interface.ts";
 
 const MenuPage: React.FC = () => {
@@ -13,7 +11,7 @@ const MenuPage: React.FC = () => {
     const [visibleCount, setVisibleCount] = useState(6);
 
     useEffect(() => {
-        const fetchMenuItems = async () => {
+        const fetchMenuItems = async (): Promise<void> => {
             try {
                 const response = await fetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
                 const data = await response.json();
@@ -26,19 +24,17 @@ const MenuPage: React.FC = () => {
         fetchMenuItems();
     }, []);
 
-    useEffect(() => {
+    useEffect(():void => {
         const filteredItems = menuItems.filter(item => item.category === activeCategory);
         setDisplayedItems(filteredItems.slice(0, visibleCount));
     }, [menuItems, activeCategory, visibleCount]);
 
-    const handleSeeMore = () => {
+    const handleSeeMore = ():void => {
         setVisibleCount(prevCount => prevCount + 6);
     };
 
     return (
         <div className="flex flex-col gap-4 justify-center items-center">
-            <Header/>
-
             <div className="text-center text-teal-500 text-5xl font-normal mb-4">
                 Browse our menu
                 <p className="max-w-md mt-4 text-center text-slate-500 text-base leading-relaxed tracking-tight">
@@ -86,8 +82,6 @@ const MenuPage: React.FC = () => {
                     See more
                 </button>
             )}
-
-            <Footer/>
         </div>
     );
 };
