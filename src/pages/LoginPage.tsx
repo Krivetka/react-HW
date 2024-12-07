@@ -11,7 +11,7 @@ const LoginPage: React.FC = () => {
 
     const defaultErrorMessage = 'Invalid email or password';
 
-    const handleEmailLogin = async (event: React.FormEvent) => {
+    const handleEmailLogin = async (event: React.FormEvent): Promise<void> => {
         event.preventDefault();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -22,7 +22,7 @@ const LoginPage: React.FC = () => {
         }
     };
 
-    const handleGoogleLogin = async () => {
+    const handleGoogleLogin = async (): Promise<void> => {
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
