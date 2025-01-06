@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Tooltip from "../components/Tooltip.tsx";
 import CategoryButton from "../components/CategoryButton.tsx";
 import MenuItem from "../components/MenuItem.tsx";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
 import { MenuItemInterface } from "../interfaces/MenuItem.interface.ts";
 
 const MenuPage: React.FC = () => {
@@ -37,8 +35,6 @@ const MenuPage: React.FC = () => {
 
     return (
         <div className="flex flex-col gap-4 justify-center items-center">
-            <Header/>
-
             <div className="text-center text-teal-500 text-5xl font-normal mb-4">
                 Browse our menu
                 <p className="max-w-md mt-4 text-center text-slate-500 text-base leading-relaxed tracking-tight">
@@ -86,8 +82,6 @@ const MenuPage: React.FC = () => {
                     See more
                 </button>
             )}
-
-            <Footer/>
         </div>
     );
 };
