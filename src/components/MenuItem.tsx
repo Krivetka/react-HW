@@ -7,9 +7,13 @@ interface MenuItemProps extends Omit<MenuItemInterface, 'id' | 'category'> {
     addItemToCart: () => void;
 }
 
-class MenuItem extends Component<MenuItemProps> {
-    render() {
-        const { meal, price, instructions, img, addItemToCart } = this.props;
+const MenuItem: React.FC<MenuItemProps> = ({meal, price, instructions, img}) => {
+    const dispatch = useDispatch();  // use redux store
+    return (
+        <div className="relative max-w-[580px] bg-white rounded-md border border-teal-500/20 flex px-6 py-8">
+            <div className="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden">
+                <img className="w-full h-full object-cover" src={img} alt={meal}/>
+            </div>
 
         return (
             <div className="relative max-w-[580px] bg-white rounded-md border border-teal-500/20 flex px-6 py-8">
