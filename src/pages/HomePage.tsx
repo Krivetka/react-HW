@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {IStyledComponent} from 'styled-components';
 
-const Container = styled.div`
+const Container: IStyledComponent<'web', any>  = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 120px 100px 100px;
 `;
 
-const BackgroundImage = styled.img`
+const BackgroundImage: IStyledComponent<'web', any>  = styled.img`
   width: 100%;
   position: absolute;
   top: 0;
@@ -18,13 +18,13 @@ const BackgroundImage = styled.img`
   z-index: -1;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper: IStyledComponent<'web', any>  = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0;
 `;
 
-const Title = styled.h2`
+const Title: IStyledComponent<'web', any>  = styled.h2`
   color: #08090A;
   font-size: 60px;
   font-weight: 400;
@@ -36,7 +36,7 @@ const Title = styled.h2`
   }
 `;
 
-const Description = styled.p`
+const Description: IStyledComponent<'web', any>  = styled.p`
   max-width: 560px;
   margin-top: 28px;
   color: #546285;
@@ -46,7 +46,7 @@ const Description = styled.p`
   letter-spacing: 0.36px;
 `;
 
-const OrderButton = styled.button`
+const OrderButton: IStyledComponent<'web', any>  = styled.button`
   width: 12rem;
   height: 3.5rem;
   margin-top: 3rem;
@@ -65,12 +65,12 @@ const OrderButton = styled.button`
   }
 `;
 
-const TrustpilotImage = styled.img`
+const TrustpilotImage: IStyledComponent<'web', any>  = styled.img`
   width: 7rem;
   margin-top: 2rem;
 `;
 
-const TrustpilotText = styled.p`
+const TrustpilotText: IStyledComponent<'web', any>  = styled.p`
   margin-top: 0.5rem;
   color: #08090A;
   font-size: 16px;
@@ -82,7 +82,7 @@ const TrustpilotText = styled.p`
   }
 `;
 
-const BannerImage = styled.img`
+const BannerImage: IStyledComponent<'web', any>  = styled.img`
   width: 40vw;
   max-width: 660px;
 `;

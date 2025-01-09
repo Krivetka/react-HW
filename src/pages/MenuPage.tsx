@@ -11,7 +11,7 @@ const MenuPage: React.FC = () => {
     const [visibleCount, setVisibleCount] = useState(6);
 
     useEffect(() => {
-        const fetchMenuItems = async () => {
+        const fetchMenuItems = async (): Promise<void> => {
             try {
                 const response = await fetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
                 const data = await response.json();
@@ -24,12 +24,12 @@ const MenuPage: React.FC = () => {
         fetchMenuItems();
     }, []);
 
-    useEffect(() => {
+    useEffect(():void => {
         const filteredItems = menuItems.filter(item => item.category === activeCategory);
         setDisplayedItems(filteredItems.slice(0, visibleCount));
     }, [menuItems, activeCategory, visibleCount]);
 
-    const handleSeeMore = () => {
+    const handleSeeMore = ():void => {
         setVisibleCount(prevCount => prevCount + 6);
     };
 
