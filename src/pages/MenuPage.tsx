@@ -34,7 +34,7 @@ const MenuPage: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col gap-4 justify-center items-center">
+        <div className="flex flex-col gap-4 justify-center items-center pb-40">
             <div className="text-center text-teal-500 text-5xl font-normal mb-4">
                 Browse our menu
                 <p className="max-w-md mt-4 text-center text-slate-500 text-base leading-relaxed tracking-tight">
@@ -77,7 +77,7 @@ const MenuPage: React.FC = () => {
         displayedItems.length < menuItems.filter(item => item.category === activeCategory).length && (
             <button
                     onClick={handleSeeMore}
-                    className="mt-8 mx-auto mb-40 bg-teal-500 text-white font-medium py-2 px-4 rounded-md hover:bg-teal-600"
+                    className="mt-8 mx-auto bg-teal-500 text-white font-medium py-2 px-4 rounded-md hover:bg-teal-600"
                 >
                     See more
                 </button>

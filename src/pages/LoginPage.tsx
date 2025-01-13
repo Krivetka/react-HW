@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import React, {useState} from 'react';
+import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import {useDispatch} from 'react-redux';
+import {login} from '../store/authSlice';
 import styles from '../styles/login.module.css';
 import app from '../firebase-config.ts';
+import {useNavigate} from "react-router-dom";
 
 const LoginPage: React.FC = () => {
     const auth = getAuth(app);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
@@ -15,8 +20,9 @@ const LoginPage: React.FC = () => {
         event.preventDefault();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log('User logged in:', userCredential.user);
+            dispatch(login({email: userCredential.user.email || ''}));
             setError(null);
+            navigate('/');
         } catch {
             setError(defaultErrorMessage);
         }
@@ -26,8 +32,9 @@ const LoginPage: React.FC = () => {
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
-            console.log('Google user logged in:', result.user);
+            dispatch(login({email: result.user.email || ''}));
             setError(null);
+            navigate('/');
         } catch {
             setError(defaultErrorMessage);
         }

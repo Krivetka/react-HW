@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import MenuPage from './pages/MenuPage';
 import LoginPage from "./pages/LoginPage.tsx";
+import ProtectedRoute from "./components/ProtectedRoute.tsx";
+import OrderPage from "./pages/OrderPage.tsx";
 
 
 const App: React.FC = () => {
@@ -20,6 +22,14 @@ const App: React.FC = () => {
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/menu" element={<MenuPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
+                    <Route
+                        path="/order"
+                        element={
+                            <ProtectedRoute>
+                                <OrderPage />
+                            </ProtectedRoute>
+                        }
+                    />
                 </Routes>
                 <Footer/>
             </BrowserRouter>
