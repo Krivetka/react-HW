@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from "./Logo.tsx";
 import {useSelector} from 'react-redux';
 import {RootState} from '../store/store';
+import {Link} from "react-router-dom";
 
 const Header: React.FC = () => {
     const cartCount = useSelector((state: RootState) => state.cart.items);
@@ -12,13 +13,13 @@ const Header: React.FC = () => {
 
             <div className="flex gap-24 items-center">
                 <nav className="flex space-x-8">
-                    <a href="#" className="text-indigo-950 text-base font-normal hover:text-teal-400">Home</a>
-                    <a href="#" className="text-teal-400 text-base font-normal">Menu</a>
-                    <a href="#" className="text-indigo-950 text-base font-normal hover:text-teal-400">Company</a>
-                    <a href="#" className="text-indigo-950 text-base font-normal hover:text-teal-400">Login</a>
+                    <Link to="/" className="text-indigo-950 text-base font-normal hover:text-teal-400">Home</Link>
+                    <Link to="/menu" className="text-teal-400 text-base font-normal">Menu</Link>
+                    <Link to="/company" className="text-indigo-950 text-base font-normal hover:text-teal-400">Company</Link>
+                    <Link to="/login" className="text-indigo-950 text-base font-normal hover:text-teal-400">Login</Link>
                 </nav>
 
-                <div className="relative">
+                <Link to="/order" className="relative">
                     <div className="w-12 h-12 bg-teal-500 rounded-md flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="17" viewBox="0 0 25 17" fill="none">
                             <g clipPath="url(#clip0_1_651)">
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
                         className="absolute -top-2 -right-2 w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md">
                         {cartCount}
                     </div>
-                </div>
+                </Link>
             </div>
         </header>
     );
