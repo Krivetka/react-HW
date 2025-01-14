@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { NavLink } from "react-router-dom";
 import { logout } from '../store/authSlice';
+import {selectTotalQuantity} from "../store/cartSlice.ts";
 
 const Header: React.FC = () => {
-    const cartCount = useSelector((state: RootState) => state.cart.items);
+    const totalQuantity = useSelector((state: RootState) => selectTotalQuantity(state));
     const user = useSelector((state: RootState) => state.auth.user);
     const dispatch = useDispatch();
 
@@ -85,7 +86,7 @@ const Header: React.FC = () => {
                         <div
                             className="absolute -top-2 -right-2 w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md"
                         >
-                            {cartCount}
+                            {totalQuantity}
                         </div>
                     </div>
                 </NavLink>

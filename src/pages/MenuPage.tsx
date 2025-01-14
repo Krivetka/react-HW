@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Tooltip from "../components/Tooltip.tsx";
 import CategoryButton from "../components/CategoryButton.tsx";
 import MenuItem from "../components/MenuItem.tsx";
-import { MenuItemInterface } from "../interfaces/MenuItem.interface.ts";
+import { IMenuItem } from "../interfaces/MenuItem.interface.ts";
 
 const MenuPage: React.FC = () => {
-    const [menuItems, setMenuItems] = useState<MenuItemInterface[]>([]);
-    const [displayedItems, setDisplayedItems] = useState<MenuItemInterface[]>([]);
+    const [menuItems, setMenuItems] = useState<IMenuItem[]>([]);
+    const [displayedItems, setDisplayedItems] = useState<IMenuItem[]>([]);
     const [activeCategory, setActiveCategory] = useState('Dessert');
     const [visibleCount, setVisibleCount] = useState(6);
 
@@ -62,9 +62,10 @@ const MenuPage: React.FC = () => {
 
             <div className="grid gap-6 justify-items-start
                     grid-cols-1 lg:grid-cols-2">
-                {displayedItems.map((item: MenuItemInterface) => (
+                {displayedItems.map((item: IMenuItem) => (
                     <MenuItem
                         key={item.id}
+                        id={item.id}
                         meal={item.meal}
                         price={item.price}
                         instructions={item.instructions}

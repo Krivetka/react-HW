@@ -1,28 +1,44 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IOrderMenuItem } from "../interfaces/MenuItem.interface.ts";
 
 interface CartState {
-    items: number;
+    items: IOrderMenuItem[];
 }
 
-const initialState: CartState = { items: 0 };
+const initialState: CartState = {
+    items: [],
+};
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addItem: (state) => {
-            state.items += 1;
+        addItem: (state, action: PayloadAction<IOrderMenuItem>) => {
+            const existingItem = state.items.find(item => item.id === action.payload.id);
+            if (existingItem) {
+                existingItem.quantity += action.payload.quantity;
+            } else {
+                state.items.push(action.payload);
+            }
         },
-        removeItem: (state) => {
-            if (state.items > 0) state.items -= 1;
+        removeItem: (state, action: PayloadAction<string>) => {
+            state.items = state.items.filter(item => item.id !== action.payload);
+        },
+        updateQuantity: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
+            const item = state.items.find(item => item.id === action.payload.id);
+            if (item) {
+                item.quantity = action.payload.quantity;
+            }
         },
         resetCart: (state) => {
-            state.items = 0;
-        }
+            state.items = [];
+        },
     },
 });
 
-export const { addItem, removeItem, resetCart } = cartSlice.actions;
-export default cartSlice.reducer;
+export const selectTotalQuantity = (state: { cart: CartState }) => {
+    return state.cart.items.reduce((total, item) => total + item.quantity, 0);
+};
 
-// TO DO: add remove and reset actions
+export const { addItem, removeItem, updateQuantity, resetCart } = cartSlice.actions;
+export default cartSlice.reducer;
