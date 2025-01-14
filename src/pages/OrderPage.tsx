@@ -1,5 +1,6 @@
 import React from 'react';
 import OrderForm from "../components/orderForm.tsx";
+import OrderList from "../components/OrderList.tsx";
 
 const OrderPage: React.FC = () => {
 
@@ -8,7 +9,7 @@ const OrderPage: React.FC = () => {
             <div className="text-center text-teal-500 text-5xl font-normal mb-4">
                 Finish your order
             </div>
-
+            <OrderList/>
             <OrderForm/>
         </div>
     );

@@ -84,7 +84,7 @@ const Header: React.FC = () => {
                             </svg>
                         </div>
                         <div
-                            className="absolute -top-2 -right-2 w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md"
+                            className="absolute -top-2 -right-2 min-w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md"
                         >
                             {totalQuantity}
                         </div>
