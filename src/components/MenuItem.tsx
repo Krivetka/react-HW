@@ -7,6 +7,13 @@ const MenuItem: React.FC<Omit<IMenuItem, 'category'>> = ({ id, meal, price, inst
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
 
+    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newQuantity = Number(event.target.value);
+        if (newQuantity > 0) {
+            setQuantity(newQuantity);
+        }
+    };
+
     const handleAddToCart = () => {
         if (quantity > 0) {
             dispatch(
@@ -42,7 +49,7 @@ const MenuItem: React.FC<Omit<IMenuItem, 'category'>> = ({ id, meal, price, inst
                         type="number"
                         value={quantity}
                         min="1"
-                        onChange={(e) => setQuantity(Number(e.target.value))}
+                        onChange={handleQuantityChange}
                         className="w-12 h-10 text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-400"
                     />
                     <button

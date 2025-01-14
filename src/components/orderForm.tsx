@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 
 const OrderForm: React.FC = () => {
-    const [street, setStreet] = useState('');
-    const [house, setHouse] = useState('');
+    const [formData, setFormData] = useState({
+        street: '',
+        house: '',
+    });
 
-    const handleOrder = () => {
-        alert(`Order placed for Street: ${street}, House: ${house}`);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { id, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [id]: value,
+        }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        alert(`Order placed for Street: ${formData.street}, House: ${formData.house}`);
     };
 
     return (
         <div>
             <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    handleOrder();
-                }}
+                onSubmit={handleSubmit}
                 className="flex flex-col gap-4 items-center"
             >
                 <div className="flex items-center gap-6">
@@ -24,8 +32,8 @@ const OrderForm: React.FC = () => {
                     <input
                         id="street"
                         type="text"
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)}
+                        value={formData.street}
+                        onChange={handleChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                         placeholder="Enter street"
                     />
@@ -38,8 +46,8 @@ const OrderForm: React.FC = () => {
                     <input
                         id="house"
                         type="text"
-                        value={house}
-                        onChange={(e) => setHouse(e.target.value)}
+                        value={formData.house}
+                        onChange={handleChange}
                         className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                         placeholder="Enter house"
                     />
