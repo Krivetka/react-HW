@@ -1,4 +1,6 @@
-import React from 'react';
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import { RootState } from '../store/store';
 import Logo from "./Logo.tsx";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
@@ -95,4 +97,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+export default connect(mapStateToProps)(Header);
