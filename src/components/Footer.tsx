@@ -3,13 +3,15 @@ import Logo from "./Logo.tsx";
 import InstagramIcon from "./../assets/icons/InstagramIcon.svg";
 import TwitterIcon from "./../assets/icons/TwitterIcon.svg";
 import YouTubeIcon from "./../assets/icons/YouTubeIcon.svg";
+import {Link} from "react-router-dom";
 
-interface FooterState {
-    companyLinks: { name: string; url: string }[];
-    templateLinks: { name: string; url: string }[];
-    flowbaseLinks: { name: string; url: string }[];
-    credits: { text: string; name: string; url: string }[];
-}
+const Footer: React.FC = () => {
+    const [companyLinks] = useState([
+        { name: "Home", url: "/" },
+        { name: "Order", url: "/order" },
+        { name: "FAQ", url: "/" },
+        { name: "Contact", url: "/contact" }
+    ]);
 
 class Footer extends Component<{}, FooterState> {
     constructor(props: {}) {
@@ -51,14 +53,14 @@ class Footer extends Component<{}, FooterState> {
                             </p>
                         </div>
 
-                        <div className="mb-8 md:mb-0">
-                            <h3 className="text-zinc-950 text-xs font-semibold uppercase tracking-wider mb-5">Company</h3>
-                            <ul className="flex flex-col gap-5 text-slate-500 text-sm space-y-2">
-                                {companyLinks.map((link, index) => (
-                                    <li key={index}><a href={link.url}>{link.name}</a></li>
-                                ))}
-                            </ul>
+                    <div className="mb-8 md:mb-0">
+                        <h3 className="text-zinc-950 text-xs font-semibold uppercase tracking-wider mb-5">Company</h3>
+                        <div className="flex flex-col gap-5 text-slate-500 text-sm space-y-2">
+                            {companyLinks.map((link, index) => (
+                                <Link to={link.url} key={index}>{link.name}</Link>
+                            ))}
                         </div>
+                    </div>
 
                         <div className="mb-8 md:mb-0">
                             <h3 className="text-zinc-950 text-xs font-semibold uppercase tracking-wider mb-5">Template</h3>
