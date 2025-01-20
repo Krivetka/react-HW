@@ -2,27 +2,78 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../store/store';
 import Logo from "./Logo.tsx";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../store/store';
+import { NavLink } from "react-router-dom";
+import { logout } from '../store/authSlice';
+import {selectTotalQuantity} from "../store/cartSlice.ts";
 
-interface HeaderProps {
-    cartCount: number;
-}
+const Header: React.FC = () => {
+    const totalQuantity = useSelector((state: RootState) => selectTotalQuantity(state));
+    const user = useSelector((state: RootState) => state.auth.user);
+    const dispatch = useDispatch();
 
-class Header extends Component<HeaderProps> {
-    render() {
-        const { cartCount } = this.props;
+    const linkClass = "text-base font-normal";
+    const activeClass = "text-teal-500";
 
-        return (
-            <header className="w-full h-24 bg-white flex justify-between items-center px-32 shadow-md">
-                <Logo width={40} height={44} />
+    return (
+        <header className="w-full h-24 bg-white flex justify-between items-center px-32 shadow-md">
+            <Logo width={40} height={44} />
 
-                <div className="flex gap-24 items-center">
-                    <nav className="flex space-x-8">
-                        <a href="#" className="text-indigo-950 text-base font-normal hover:text-teal-400">Home</a>
-                        <a href="#" className="text-teal-400 text-base font-normal">Menu</a>
-                        <a href="#" className="text-indigo-950 text-base font-normal hover:text-teal-400">Company</a>
-                        <a href="#" className="text-indigo-950 text-base font-normal hover:text-teal-400">Login</a>
-                    </nav>
+            <div className="flex gap-24 items-center">
+                <nav className="flex space-x-8">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/menu"
+                        className={({ isActive }) =>
+                            `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                        }
+                    >
+                        Menu
+                    </NavLink>
+                    <NavLink
+                        to="/company"
+                        className={({ isActive }) =>
+                            `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                        }
+                    >
+                        Company
+                    </NavLink>
+                    {!user ? (
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                            }
+                        >
+                            Login
+                        </NavLink>
+                    ) : (
+                        <div className="flex items-center space-x-4">
+                            <span className="text-teal-500 font-medium">{user.email}</span>
+                            <button
+                                onClick={() => dispatch(logout())}
+                                className="text-red-500 hover:underline"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    )}
+                </nav>
 
+                <NavLink
+                    to="/order"
+                    className={({ isActive }) =>
+                        `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                    }
+                >
                     <div className="relative">
                         <div className="w-12 h-12 bg-teal-500 rounded-md flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="17" viewBox="0 0 25 17" fill="none">
@@ -35,18 +86,15 @@ class Header extends Component<HeaderProps> {
                             </svg>
                         </div>
                         <div
-                            className="absolute -top-2 -right-2 w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md">
-                            {cartCount}
+                            className="absolute -top-2 -right-2 min-w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md"
+                        >
+                            {totalQuantity}
                         </div>
                     </div>
-                </div>
-            </header>
-        );
-    }
-}
-
-const mapStateToProps = (state: RootState) => ({
-    cartCount: state.cart.items,
-});
+                </NavLink>
+            </div>
+        </header>
+    );
+};
 
 export default connect(mapStateToProps)(Header);
