@@ -34,13 +34,13 @@ const MenuPage: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col gap-4 justify-center items-center pb-40">
-            <div className="text-center text-teal-500 text-5xl font-normal mb-4">
+        <div className="flex flex-col gap-4 justify-center items-center pt-6 pb-40 transition-colors duration-300">
+            <div className="text-center text-teal-500 dark:text-teal-400 text-5xl font-normal mb-4">
                 Browse our menu
-                <p className="max-w-md mt-4 text-center text-slate-500 text-base leading-relaxed tracking-tight">
+                <p className="max-w-md mt-4 text-center text-slate-500 dark:text-slate-300 text-base leading-relaxed tracking-tight">
                     Use our menu to place an order online, or{' '}
                     <Tooltip text="+8 (800) 888-8888">
-                        <span className="text-teal-500">phone</span>
+                        <span className="text-teal-500 dark:text-teal-400">phone</span>
                     </Tooltip>{' '}
                     our store to place a pickup order. Fast and fresh food.
                 </p>
@@ -60,8 +60,9 @@ const MenuPage: React.FC = () => {
                 ))}
             </div>
 
-            <div className="grid gap-6 justify-items-start
-                    grid-cols-1 lg:grid-cols-2">
+            <div
+                className="grid gap-6 justify-items-start grid-cols-1 lg:grid-cols-2"
+            >
                 {displayedItems.map((item: IMenuItem) => (
                     <MenuItem
                         key={item.id}
@@ -72,17 +73,17 @@ const MenuPage: React.FC = () => {
                         img={item.img}
                     />
                 ))}
-        </div>
+            </div>
 
-    {
-        displayedItems.length < menuItems.filter(item => item.category === activeCategory).length && (
-            <button
-                    onClick={handleSeeMore}
-                    className="mt-8 mx-auto bg-teal-500 text-white font-medium py-2 px-4 rounded-md hover:bg-teal-600"
-                >
-                    See more
-                </button>
-            )}
+            {displayedItems.length <
+                menuItems.filter(item => item.category === activeCategory).length && (
+                    <button
+                        onClick={handleSeeMore}
+                        className="mt-8 mx-auto bg-teal-500 dark:bg-teal-400 text-white dark:text-gray-900 font-medium py-2 px-4 rounded-md hover:bg-teal-600 dark:hover:bg-teal-500"
+                    >
+                        See more
+                    </button>
+                )}
         </div>
     );
 };

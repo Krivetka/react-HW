@@ -24,7 +24,7 @@ const Header: React.FC = () => {
     ];
 
     return (
-        <header className="w-full h-24 bg-white dark:bg-gray-800 flex justify-between items-center px-32 shadow-md transition-colors duration-300">
+        <header className="w-full h-24 bg-white dark:bg-slate-900 flex justify-between items-center px-32 shadow-md transition-colors duration-300">
             <Logo width={40} height={44} />
 
             <div className="flex gap-12 items-center">
@@ -82,9 +82,9 @@ const Header: React.FC = () => {
                             </svg>
                         </div>
                         <div
-                            className="absolute -top-2 -right-2 min-w-5 h-5 bg-white dark:bg-gray-700 rounded-full text-teal-500 dark:text-white text-xs font-bold flex items-center justify-center shadow-md"
+                            className="absolute -top-2 -right-2 min-w-5 h-5 px-1 bg-white dark:bg-gray-700 rounded-full text-teal-500 dark:text-white text-xs font-bold flex items-center justify-center shadow-md"
                         >
-                            {totalQuantity}
+                            {totalQuantity < 100 ? totalQuantity : "99+"}
                         </div>
                     </div>
                 </NavLink>
