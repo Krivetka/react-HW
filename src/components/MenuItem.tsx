@@ -6,7 +6,7 @@ import { addItem } from '../store/cartSlice';
 const MenuItem: React.FC<Omit<IMenuItem, 'category'>> = ({ id, meal, price, instructions, img }) => {
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
-
+  
     const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newQuantity = Number(event.target.value);
         if (newQuantity > 0) {
