@@ -41,7 +41,6 @@ const Footer: React.FC = () => {
                             Takeaway & Delivery template for small - medium businesses.
                         </p>
                     </div>
-
                     <div className="mb-8 md:mb-0">
                         <h3 className="text-zinc-950 dark:text-zinc-200 text-xs font-semibold uppercase tracking-wider mb-5">
                             Company
@@ -80,7 +79,6 @@ const Footer: React.FC = () => {
                             ))}
                         </ul>
                     </div>
-                </div>
 
                 <div className="border-t border-gray-300 dark:border-gray-700 mt-24 mb-16"></div>
 
