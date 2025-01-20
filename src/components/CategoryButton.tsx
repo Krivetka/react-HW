@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 
 interface CategoryButtonProps {
     label: string;

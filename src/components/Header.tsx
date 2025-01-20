@@ -93,4 +93,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+export default connect(mapStateToProps)(Header);
