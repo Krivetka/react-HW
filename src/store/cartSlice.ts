@@ -24,3 +24,5 @@ const cartSlice = createSlice({
 
 export const { addItem, removeItem, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;
+
+// TO DO: add remove and reset actions
