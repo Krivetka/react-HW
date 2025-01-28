@@ -42,5 +42,3 @@ export const selectTotalQuantity = (state: { cart: CartState }) => {
 
 export const { addItem, removeItem, updateQuantity, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;
-
-// TO DO: add remove and reset actions
