@@ -3,3 +3,11 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.light {
+    background: #fff;
+}
+
+.dark {
+    background: #101c39;
+}

@@ -1,56 +1,50 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { RootState } from '../store/store';
-import Logo from "./Logo.tsx";
+import React from 'react';
+import Logo from './Logo.tsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import { logout } from '../store/authSlice';
-import {selectTotalQuantity} from "../store/cartSlice.ts";
+import { selectTotalQuantity } from '../store/cartSlice.ts';
+import ThemeToggle from './ThemeToggle.tsx';
 
 const Header: React.FC = () => {
     const totalQuantity = useSelector((state: RootState) => selectTotalQuantity(state));
     const user = useSelector((state: RootState) => state.auth.user);
     const dispatch = useDispatch();
 
-    const linkClass = "text-base font-normal";
-    const activeClass = "text-teal-500";
+    const linkClass = 'text-base font-normal';
+    const activeClass = 'text-teal-500';
+    const inactiveClass = 'text-indigo-950 dark:text-gray-300 hover:text-teal-400'
+
+
+    const navLinks = [
+        { to: '/', label: 'Home' },
+        { to: '/menu', label: 'Menu' },
+        { to: '/company', label: 'Company' },
+    ];
 
     return (
-        <header className="w-full h-24 bg-white flex justify-between items-center px-32 shadow-md">
+        <header className="w-full h-24 bg-white dark:bg-slate-900 flex justify-between items-center px-32 shadow-md transition-colors duration-300">
             <Logo width={40} height={44} />
 
-            <div className="flex gap-24 items-center">
+            <div className="flex gap-12 items-center">
                 <nav className="flex space-x-8">
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
-                        }
-                    >
-                        Home
-                    </NavLink>
-                    <NavLink
-                        to="/menu"
-                        className={({ isActive }) =>
-                            `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
-                        }
-                    >
-                        Menu
-                    </NavLink>
-                    <NavLink
-                        to="/company"
-                        className={({ isActive }) =>
-                            `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
-                        }
-                    >
-                        Company
-                    </NavLink>
+                    {navLinks.map((link) => (
+                        <NavLink
+                            key={link.to}
+                            to={link.to}
+                            className={({ isActive }) =>
+                                `${linkClass} ${isActive ? activeClass : inactiveClass}`
+                            }
+                        >
+                            {link.label}
+                        </NavLink>
+                    ))}
                     {!user ? (
                         <NavLink
                             to="/login"
                             className={({ isActive }) =>
-                                `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                                `${linkClass} ${isActive ? activeClass : inactiveClass}`
                             }
                         >
                             Login
@@ -68,10 +62,12 @@ const Header: React.FC = () => {
                     )}
                 </nav>
 
+                <ThemeToggle />
+
                 <NavLink
                     to="/order"
                     className={({ isActive }) =>
-                        `${linkClass} ${isActive ? activeClass : "text-indigo-950 hover:text-teal-400"}`
+                        `${linkClass} ${isActive ? activeClass : inactiveClass}`
                     }
                 >
                     <div className="relative">
@@ -86,9 +82,9 @@ const Header: React.FC = () => {
                             </svg>
                         </div>
                         <div
-                            className="absolute -top-2 -right-2 min-w-5 h-5 bg-white rounded-full text-teal-500 text-xs font-bold flex items-center justify-center shadow-md"
+                            className="absolute -top-2 -right-2 min-w-5 h-5 px-1 bg-white dark:bg-gray-700 rounded-full text-teal-500 dark:text-white text-xs font-bold flex items-center justify-center shadow-md"
                         >
-                            {totalQuantity}
+                            {totalQuantity < 100 ? totalQuantity : "99+"}
                         </div>
                     </div>
                 </NavLink>
@@ -97,4 +93,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default connect(mapStateToProps)(Header);
+export default Header;

@@ -20,13 +20,16 @@ const OrderForm: React.FC = () => {
     };
 
     return (
-        <div>
+        <>
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-4 items-center"
             >
                 <div className="flex items-center gap-6">
-                    <label htmlFor="street" className="w-16 text-sm font-medium text-black">
+                    <label
+                        htmlFor="street"
+                        className="w-16 text-sm font-medium text-black dark:text-gray-300"
+                    >
                         Street
                     </label>
                     <input
@@ -34,13 +37,16 @@ const OrderForm: React.FC = () => {
                         type="text"
                         value={formData.street}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-black dark:text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                         placeholder="Enter street"
                     />
                 </div>
 
-                <div className="flex items-center gap-6">
-                    <label htmlFor="house" className="w-16 text-sm font-medium text-black">
+                <div className="flex items-center gap-6 mb-2">
+                    <label
+                        htmlFor="house"
+                        className="w-16 text-sm font-medium text-black dark:text-gray-300"
+                    >
                         House
                     </label>
                     <input
@@ -48,19 +54,19 @@ const OrderForm: React.FC = () => {
                         type="text"
                         value={formData.house}
                         onChange={handleChange}
-                        className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
+                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-black dark:text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                         placeholder="Enter house"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="w-32 px-4 py-2 bg-teal-500 text-white rounded-md font-medium hover:bg-teal-600 transition-colors"
+                    className="w-32 px-4 py-2 bg-teal-500 text-white dark:bg-teal-400 dark:text-gray-900 rounded-md font-medium hover:bg-teal-600 dark:hover:bg-teal-500 transition-colors"
                 >
                     Order
                 </button>
             </form>
-        </div>
+        </>
     );
 };
 

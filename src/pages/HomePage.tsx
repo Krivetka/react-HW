@@ -1,114 +1,47 @@
 import React from 'react';
-import styled, {IStyledComponent} from 'styled-components';
-
-const Container: IStyledComponent<'web', any>  = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 120px 100px 100px;
-`;
-
-const BackgroundImage: IStyledComponent<'web', any>  = styled.img`
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-`;
-
-const ContentWrapper: IStyledComponent<'web', any>  = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-`;
-
-const Title: IStyledComponent<'web', any>  = styled.h2`
-  color: #08090A;
-  font-size: 60px;
-  font-weight: 400;
-  line-height: 60px; 
-  letter-spacing: 1.8px;
-
-  span {
-    color: #14b8a6;
-  }
-`;
-
-const Description: IStyledComponent<'web', any>  = styled.p`
-  max-width: 560px;
-  margin-top: 28px;
-  color: #546285;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.36px;
-`;
-
-const OrderButton: IStyledComponent<'web', any>  = styled.button`
-  width: 12rem;
-  height: 3.5rem;
-  margin-top: 3rem;
-  background-color: #35B8BE;;
-  border-radius: 0.375rem;
-  color: #FFF;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 20px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #0d9c8d;
-  }
-`;
-
-const TrustpilotImage: IStyledComponent<'web', any>  = styled.img`
-  width: 7rem;
-  margin-top: 2rem;
-`;
-
-const TrustpilotText: IStyledComponent<'web', any>  = styled.p`
-  margin-top: 0.5rem;
-  color: #08090A;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-
-  span {
-    color: #35B8BE;
-  }
-`;
-
-const BannerImage: IStyledComponent<'web', any>  = styled.img`
-  width: 40vw;
-  max-width: 660px;
-`;
+import figure from "./../assets/figure.png"
+import trustpilot from "../assets/trustpilot.png"
+import bunner from "../assets/home-bunner.png"
 
 const HomePage: React.FC = () => {
     return (
-        <Container>
-            <BackgroundImage src="src/assets/figure.png" alt="figure"/>
-            <ContentWrapper>
-                <Title>
+        <div className="w-full h-full flex justify-center items-center px-6 md:px-16 py-10 relative">
+            <img
+                src={figure}
+                alt="figure"
+                className="absolute top-0 right-0 w-full z-[-1] dark:opacity-5"
+            />
+            <div className="flex flex-col items-start gap-6">
+                <h2 className="text-4xl md:text-6xl font-light text-gray-900 dark:text-gray-100 leading-tight tracking-wide">
                     Beautiful food & <br/> takeaway,
-                    <span>delivered</span> <br/> to your door.
-                </Title>
-                <Description>
+                    <span className="text-teal-500"> delivered</span> <br/> to your door.
+                </h2>
+                <p className="text-gray-600 dark:text-gray-300 text-sm md:text-lg leading-relaxed max-w-md">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                     industry's standard dummy text ever since the 1500s.
-                </Description>
-                <OrderButton aria-label="Place an order">Place an Order</OrderButton>
-                <TrustpilotImage src="src/assets/trustpilot.png" alt="trustpilot"/>
-                <TrustpilotText>
-                    <span>4.8 out of 5</span> based on 2000+ reviews
-                </TrustpilotText>
-            </ContentWrapper>
-
-            <BannerImage src="src/assets/home-bunner.png" alt="banner"/>
-        </Container>
+                </p>
+                <button
+                    aria-label="Place an order"
+                    className="w-48 h-14 mt-6 bg-teal-500 text-white rounded-lg text-base font-medium hover:bg-teal-700 transition-colors duration-200"
+                    type="button"
+                >
+                    Place an Order
+                </button>
+                <img
+                    src={trustpilot}
+                    alt="trustpilot"
+                    className="w-28 mt-4 dark:opacity-0"
+                />
+                <p className="text-gray-900 dark:text-gray-100 text-sm font-normal">
+                    <span className="text-teal-500">4.8 out of 5</span> based on 2000+ reviews
+                </p>
+            </div>
+            <img
+                src={bunner}
+                alt="banner"
+                className="w-5/12 max-w-lg"
+            />
+        </div>
     );
 };
 
