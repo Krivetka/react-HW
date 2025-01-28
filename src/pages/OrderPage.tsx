@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderForm from "../components/orderForm.tsx";
+import OrderForm from "../components/OrderForm.tsx";
 import OrderList from "../components/OrderList.tsx";
 
 const OrderPage: React.FC = () => {
